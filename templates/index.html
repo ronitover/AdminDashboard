@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" class="logo">
+            <p class="sidebar-text">LIBRARY MANAGEMENT SYSTEM</p> 
+            <ul class="sidebar-menu">
+                <li><a href="{{ url_for('book_management') }}" class="{{ 'active' if request.endpoint == 'book_management' else '' }}"><img src="{{ url_for('static', filename='images/menu-icons/book-solid.svg') }}" alt="Book Icon">Book Management</a></li> 
+                <li><a href="{{ url_for('user_management') }}" class="{{ 'active' if request.endpoint == 'user_management' else '' }}"><img src="{{ url_for('static', filename='images/menu-icons/user-solid.svg') }}" alt="User Icon">User Management</a></li>         
+            </ul>
+        </div>
+    </div>
     {% block content %}
     {% endblock %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
 </body>
 </html>
